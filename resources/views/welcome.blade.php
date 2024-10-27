@@ -13,15 +13,25 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="p-5">
-<x-modal title="Test">
-    @slot('body')
+<x-modal title="Modal 1" name="modal1">
+    <x-slot:body>
         <span class="p-5">
-            Body tag test
+            Modal
         </span>
-    @endslot
+    </x-slot>
 </x-modal>
-<button x-data x-on:click="$dispatch('open-modal')" class="px-3 py-1 bg-teal-500 text-white rounded">
-    Open Modal
+<x-modal title="Modal 2" name="modal2">
+    <x-slot:body>
+        <span class="p-5">
+            Another modal
+        </span>
+    </x-slot>
+</x-modal>
+<button x-data x-on:click="$dispatch('open-modal', {name: 'modal1'})" class="px-3 py-1 bg-teal-500 text-white rounded">
+    Open Modal 1
+</button>
+<button x-data x-on:click="$dispatch('open-modal', {name: 'modal2'})" class="px-3 py-1 bg-teal-500 text-white rounded">
+    Open Modal 2
 </button>
 </body>
 </html>
