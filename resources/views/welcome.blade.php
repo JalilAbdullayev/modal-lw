@@ -12,26 +12,29 @@
     <!-- Styles / Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="p-5">
-<x-modal title="Modal 1" name="modal1">
-    <x-slot:body>
-        <span class="p-5">
-            Modal
-        </span>
-    </x-slot>
-</x-modal>
-<x-modal title="Modal 2" name="modal2">
-    <x-slot:body>
-        <span class="p-5">
-            Another modal
-        </span>
-    </x-slot>
-</x-modal>
-<button x-data x-on:click="$dispatch('open-modal', {name: 'modal1'})" class="px-3 py-1 bg-teal-500 text-white rounded">
-    Open Modal 1
-</button>
-<button x-data x-on:click="$dispatch('open-modal', {name: 'modal2'})" class="px-3 py-1 bg-teal-500 text-white rounded">
-    Open Modal 2
-</button>
+<body class="antialiased">
+<div class="flex">
+    <div class="w-2/4 mx-auto pt-10">
+        <x-modal title="Modal 1" name="1">
+            <x-slot:body>
+                <livewire:register-form/>
+            </x-slot>
+        </x-modal>
+        <button x-data @click="$dispatch('open-modal', {name: '1'})" class="px-3 py-1 bg-teal-500 text-white rounded">
+            Modal 1
+        </button>
+        <x-modal title="Modal 2" name="2">
+            <x-slot:body>
+                <span class="p-5">
+                    Modal 2
+                </span>
+            </x-slot>
+        </x-modal>
+        <button x-data @click="$dispatch('open-modal', {name: '2'})" class="px-3 py-1 bg-blue-500 text-white rounded">
+            Modal 2
+        </button>
+    </div>
+</div>
+<livewire:users-list/>
 </body>
 </html>
